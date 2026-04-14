@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intellabooks · Partner Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C4973A;--gold-bright:#DBA840;--gold-pale:#FBF6E8;
+  --gold-dim:rgba(196,151,58,0.11);--gold-border:rgba(196,151,58,0.26);
+  --bg:#FFFFFF;--surface:#FAFAF7;--text:#141210;--muted:#6B6460;--soft:#A09890;--border:rgba(0,0,0,0.07);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);min-height:100vh}
+.hero{text-align:center;padding:5rem 1.5rem 3rem;max-width:640px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border:0.5px solid var(--gold-border);border-radius:100px;padding:6px 18px;margin-bottom:2rem;background:var(--gold-dim)}
+.hero-badge span{width:5px;height:5px;border-radius:50%;background:var(--gold-bright);animation:pulse 2.5s infinite;display:inline-block}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.1}}
+.hero-title{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(36px,7vw,64px);line-height:1.08;margin-bottom:1.25rem;color:var(--text)}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:15px;font-weight:300;color:var(--muted);line-height:1.9;max-width:480px;margin:0 auto 2rem}
+.hero-rule{width:28px;height:1px;background:var(--gold);margin:0 auto 3rem;opacity:0.5}
+.nav-wrap{position:sticky;top:0;background:rgba(255,255,255,0.9);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);z-index:20;border-bottom:0.5px solid var(--gold-border)}
+.nav-inner{max-width:860px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;padding:0 1.5rem}
+.nav-inner::-webkit-scrollbar{display:none}
+.tab-btn{font-family:'Inter',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.05em;color:var(--soft);padding:14px 18px;border:none;background:none;cursor:pointer;white-space:nowrap;border-bottom:1.5px solid transparent;transition:all 0.18s;flex-shrink:0}
+.tab-btn:hover{color:var(--text)}.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500}
+.content-wrap{max-width:720px;margin:0 auto;padding:3rem 1.5rem 6rem}
+.section{display:none}.section.active{display:block}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.pg-title{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(28px,5vw,40px);line-height:1.15;color:var(--text);margin-bottom:1.5rem}
+.pg-title em{font-style:italic;color:var(--gold)}
+.prose{font-size:15px;line-height:1.9;color:var(--muted);margin-bottom:1.5rem;font-weight:300}
+.prose strong{color:var(--text);font-weight:500}
+.card{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:16px;padding:1.75rem;margin-bottom:1rem;position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;top:-24px;right:-24px;width:80px;height:80px;background:radial-gradient(circle,rgba(196,151,58,0.07),transparent 70%);pointer-events:none}
+.card .c-eye{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.card .c-title{font-family:'Playfair Display',serif;font-size:clamp(17px,2.8vw,21px);font-weight:400;color:var(--text);margin-bottom:8px;line-height:1.3}
+.card .c-body{font-size:14px;color:var(--muted);line-height:1.88;font-weight:300}
+.card .c-body strong{color:var(--text);font-weight:500}
+.dark-card{background:linear-gradient(150deg,#111009,#1C190F);border-radius:16px;padding:1.75rem;margin-bottom:1rem}
+.dc-eye{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:7px}
+.dc-title{font-family:'Playfair Display',serif;font-size:clamp(17px,2.8vw,21px);font-weight:400;color:#F4F0E6;margin-bottom:8px;line-height:1.3}
+.dc-body{font-size:14px;color:rgba(244,240,230,0.58);line-height:1.88;font-weight:300}
+.dc-body strong{color:var(--gold-bright);font-weight:400}
+.accent{border-left:1.5px solid var(--gold);padding:1rem 1.25rem;background:var(--gold-pale);border-radius:0 12px 12px 0;margin-bottom:1rem}
+.accent .a-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.accent .a-body{font-size:13px;color:var(--muted);line-height:1.8;font-weight:300}
+.scripture-block{text-align:center;padding:2rem 1.5rem;margin-bottom:1.75rem;border:0.5px solid var(--gold-border);border-radius:16px;background:linear-gradient(150deg,#FFFEF9,#FFFFFF)}
+.sb-text{font-family:'Playfair Display',serif;font-size:clamp(14px,2.5vw,17px);font-style:italic;color:var(--muted);line-height:2;display:block}
+.sb-ref{display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.af-steps{display:grid;grid-template-columns:repeat(5,1fr);border:0.5px solid var(--gold-border);border-radius:16px;overflow:hidden;margin-bottom:1.75rem}
+.af-step{padding:1.4rem 1rem;background:var(--surface);border-right:0.5px solid var(--gold-border);text-align:center}
+.af-step:last-child{border-right:none}
+.af-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;color:var(--gold);margin-bottom:8px;line-height:1}
+.af-label{font-size:11px;font-weight:500;color:var(--text);margin-bottom:5px}
+.af-desc{font-size:11px;color:var(--muted);line-height:1.6;font-weight:300}
+.examples{display:flex;flex-direction:column;gap:10px;margin-bottom:1.75rem}
+.ex-row{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:14px;padding:1.35rem 1.5rem}
+.ex-industry{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ex-call{font-size:13px;font-weight:400;color:var(--text);margin-bottom:6px;line-height:1.5}
+.ex-call span{font-style:italic;color:var(--muted)}
+.ex-result{font-size:12.5px;color:var(--muted);line-height:1.7;font-weight:300}
+.ex-result strong{color:var(--text);font-weight:500}
+.steps{border:0.5px solid var(--gold-border);border-radius:16px;overflow:hidden;margin-bottom:1.75rem}
+.step{display:flex;gap:1.25rem;padding:1.35rem 1.6rem;border-bottom:0.5px solid var(--border);background:var(--surface)}
+.step:last-child{border-bottom:none}
+.step-n{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--gold);line-height:1;min-width:22px;padding-top:1px}
+.step-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px}
+.step-body{font-size:13px;color:var(--muted);line-height:1.75;font-weight:300}
+.pay-hero{text-align:center;padding:2.25rem 1.5rem;border:0.5px solid var(--gold);border-radius:16px;background:linear-gradient(150deg,#FFFEF5,#FFFFFF);margin-bottom:1.25rem}
+.ph-label{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.ph-num{font-family:'Playfair Display',serif;font-size:clamp(56px,10vw,80px);font-weight:400;color:var(--gold);line-height:1}
+.ph-num sup{font-size:22px;vertical-align:top;margin-top:12px;display:inline-block}
+.ph-num sub{font-size:14px;color:var(--muted);font-weight:300}
+.ph-sub{font-size:14px;color:var(--muted);margin-top:8px;font-weight:300}
+.pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.25rem}
+.pg-box{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:14px;padding:1.2rem;text-align:center}
+.pg-box.hl{background:var(--gold-pale);border-color:var(--gold)}
+.pgb-label{font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--soft);margin-bottom:7px}
+.pgb-val{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--text);line-height:1;margin-bottom:4px}
+.pgb-val em{font-size:12px;color:var(--muted);font-style:normal;font-weight:300}
+.pgb-note{font-size:11px;color:var(--muted);font-weight:300;line-height:1.5}
+.reward{border:0.5px solid var(--gold);border-radius:16px;padding:2rem;margin-bottom:1rem;background:linear-gradient(150deg,#FFFEF5,#FFFFFF);text-align:center}
+.rw-label{font-size:10px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.rw-title{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,36px);font-weight:400;color:var(--text);line-height:1.2;margin-bottom:12px}
+.rw-title em{color:var(--gold);font-style:italic}
+.rw-pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.rw-pill{font-size:12px;color:var(--text);background:var(--gold-dim);border:0.5px solid var(--gold-border);border-radius:100px;padding:5px 14px}
+.form-shell{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:16px;padding:2rem;margin-bottom:1.75rem}
+.f-row{margin-bottom:1.1rem}
+.f-lbl{display:block;font-size:11px;font-weight:500;letter-spacing:0.07em;color:var(--text);margin-bottom:5px}
+.f-input{width:100%;font-family:'Inter',sans-serif;font-size:14px;font-weight:300;color:var(--text);background:var(--bg);border:0.5px solid var(--gold-border);border-radius:9px;padding:10px 13px;outline:none;transition:border-color 0.18s}
+.f-input:focus{border-color:var(--gold)}
+select.f-input{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23C4973A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+.f-submit{width:100%;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.05em;color:#fff;background:var(--gold);border:none;border-radius:10px;padding:13px;cursor:pointer;transition:opacity 0.18s;margin-top:0.5rem}
+.f-submit:hover{opacity:0.87}
+.or-divider{display:flex;align-items:center;gap:12px;margin:1.25rem 0;color:var(--soft);font-size:12px;letter-spacing:0.06em}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:0.5px;background:var(--gold-border)}
+.email-cta{display:flex;flex-direction:column;align-items:center;padding:1.25rem;border:0.5px solid var(--gold-border);border-radius:14px;background:var(--surface);text-decoration:none;transition:border-color 0.18s;margin-bottom:1.25rem}
+.email-cta:hover{border-color:var(--gold)}
+.ec-label{font-size:11px;font-weight:400;color:var(--soft);letter-spacing:0.04em;margin-bottom:4px}
+.ec-email{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:var(--gold)}
+/* FULL EXAMPLES */
+.full-example{border:0.5px solid var(--gold-border);border-radius:18px;overflow:hidden;margin-bottom:1.5rem}
+.fe-header{background:linear-gradient(135deg,var(--gold-pale),#FFFFFF);padding:1.4rem 1.75rem;border-bottom:0.5px solid var(--gold-border)}
+.fe-industry{font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.fe-headline{font-family:'Playfair Display',serif;font-size:clamp(16px,2.5vw,20px);font-weight:400;color:var(--text);line-height:1.3}
+.fe-body{padding:1.5rem 1.75rem;background:var(--surface)}
+.fe-body p{font-size:14px;color:var(--muted);line-height:1.88;font-weight:300;margin-bottom:0.9rem}
+.fe-body p:last-child{margin-bottom:0}
+.fe-body em{color:var(--text);font-style:italic}
+.fe-body strong{color:var(--text);font-weight:500}
+.fe-unlock{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;padding:1.1rem 1.75rem;background:var(--gold-pale);border-top:0.5px solid var(--gold-border)}
+.fu-label{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.fu-text{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+.fu-text strong{color:var(--text);font-weight:500}
+.fe-ads{display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:center;padding:0.9rem 1.75rem;background:var(--bg);border-top:0.5px solid var(--border)}
+.fa-label{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--soft);white-space:nowrap}
+.fa-text{font-size:12.5px;color:var(--muted);line-height:1.7;font-weight:300}
+/* BLUEPRINT */
+.blueprint-flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.bp-node{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:16px;padding:1.4rem 1.75rem;width:100%;text-align:center}
+.bp-top{background:linear-gradient(150deg,#FFFEF9,#FFFFFF)}
+.bp-hub{background:linear-gradient(150deg,#111009,#1C190F)}
+.bp-hub .bp-label{color:#F4F0E6}
+.bp-hub .bp-sub{color:rgba(244,240,230,0.58)}
+.bp-hub-eye{font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:5px}
+.bp-report{background:var(--gold-pale);border-color:var(--gold)}
+.bp-bottom{background:linear-gradient(150deg,var(--gold-pale),#FFFFFF);border-color:var(--gold)}
+.bp-label{font-family:'Playfair Display',serif;font-size:clamp(16px,2.5vw,20px);font-weight:400;color:var(--text);margin-bottom:6px}
+.bp-sub{font-size:13px;color:var(--muted);line-height:1.8;font-weight:300;max-width:580px;margin:0 auto}
+.bp-sub strong{color:var(--text);font-weight:500}
+.bp-pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:10px}
+.bp-pills span{font-size:12px;color:var(--text);background:var(--gold-dim);border:0.5px solid var(--gold-border);border-radius:100px;padding:4px 12px}
+.bp-arrow{font-size:20px;color:var(--gold);opacity:0.5;line-height:1;padding:4px 0}
+.bp-fork{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;width:100%;margin:0}
+.bp-fork-left,.bp-fork-right{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:14px;padding:1.2rem;text-align:center}
+.bp-fork-or{font-size:11px;color:var(--soft);font-style:italic;text-align:center;padding:0 4px}
+.bf-tag{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.bf-text{font-size:12.5px;color:var(--muted);line-height:1.65;font-weight:300}
+.bp-channels{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:100%}
+.bp-channel{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:12px;padding:1rem 0.75rem;text-align:center}
+.bc-icon{font-size:18px;margin-bottom:6px}
+.bc-name{font-size:11px;font-weight:500;color:var(--text);margin-bottom:5px}
+.bc-desc{font-size:11px;color:var(--muted);line-height:1.55;font-weight:300}
+@media(max-width:700px){.bp-channels{grid-template-columns:repeat(3,1fr)}.bp-fork{grid-template-columns:1fr;gap:6px}.bp-fork-or{padding:4px 0}}
+@media(max-width:480px){.bp-channels{grid-template-columns:repeat(2,1fr)}.fe-unlock,.fe-ads{grid-template-columns:1fr}}
+/* RECIPE */
+.recipe-grid{border:0.5px solid var(--gold-border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
+.recipe-row{display:grid;grid-template-columns:1fr auto auto;gap:1rem;align-items:center;padding:0.9rem 1.4rem;border-bottom:0.5px solid var(--border);background:var(--surface)}
+.recipe-row:nth-child(even){background:var(--bg)}
+.rr-role{font-size:13px;font-weight:400;color:var(--text)}
+.rr-market{font-size:11px;color:var(--soft);font-style:italic;white-space:nowrap}
+.rr-intella{font-size:11px;font-weight:500;color:var(--gold);letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap}
+.recipe-total{display:grid;grid-template-columns:1fr auto auto auto;gap:0.75rem;align-items:center;padding:1.1rem 1.4rem;background:var(--gold-pale)}
+.rt-label{font-size:11px;font-weight:500;color:var(--muted)}
+.rt-val{font-family:'Playfair Display',serif;font-size:17px;font-weight:400;color:var(--soft);text-decoration:line-through;white-space:nowrap}
+.rt-val span{font-size:11px}
+.rt-vs{font-size:11px;color:var(--soft);font-style:italic}
+.rt-intella{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--gold);white-space:nowrap}
+.rt-intella span{font-size:11px;font-weight:300;color:var(--muted)}
+/* TIER CARDS */
+.tier-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem}
+.tier-card{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:16px;padding:1.4rem;position:relative}
+.featured-tier{background:var(--gold-pale);border-color:var(--gold)}
+.tc-badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);border:0.5px solid var(--gold-border);border-radius:100px;padding:3px 10px;margin-bottom:10px}
+.tc-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--text);margin-bottom:6px}
+.tc-desc{font-size:12px;color:var(--muted);line-height:1.6;font-weight:300;margin-bottom:12px;min-height:52px}
+.tc-retail{font-size:11px;color:var(--soft);margin-bottom:4px}
+.tc-retail span{text-decoration:line-through}
+.tc-partner{font-size:13px;color:var(--text);margin-bottom:8px}
+.tc-partner strong{color:var(--gold);font-size:18px;font-weight:500}
+.tc-earn{font-size:11px;color:var(--muted);font-weight:300;padding-top:8px;border-top:0.5px solid var(--gold-border);line-height:1.5}
+/* PAYOUT */
+.payout-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem}
+.payout-box{background:var(--surface);border:0.5px solid var(--gold-border);border-radius:14px;padding:1.35rem;text-align:center;cursor:pointer;transition:border-color 0.18s}
+.payout-box:hover,.payout-box.selected{background:var(--gold-pale);border-color:var(--gold)}
+.pb-freq{font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.pb-val{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;color:var(--text);line-height:1;margin-bottom:4px}
+.pb-val em{font-size:12px;color:var(--muted);font-style:normal;font-weight:300}
+.pb-note{font-size:11px;color:var(--muted);font-weight:300;line-height:1.5}
+@media(max-width:640px){.tier-cards{grid-template-columns:1fr}.recipe-total{grid-template-columns:1fr 1fr}.payout-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.af-steps{grid-template-columns:repeat(3,1fr)}.pay-grid{grid-template-columns:1fr}.recipe-row{grid-template-columns:1fr auto}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge"><span></span>Partner Welcome · Intellabooks 2026</div>
+  <h1 class="hero-title">Built on twelve years.<br>Explained in <em>five minutes.</em></h1>
+  <p class="hero-sub">Everything you need to understand what we do, how you get paid, and how to open any door.</p>
+  <div class="hero-rule"></div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <button class="tab-btn active" onclick="show('compass',this)">Our Compass</button>
+    <button class="tab-btn" onclick="show('product',this)">How It Works</button>
+    <button class="tab-btn" onclick="show('blueprint',this)">The Blueprint</button>
+    <button class="tab-btn" onclick="show('value',this)">The Value</button>
+    <button class="tab-btn" onclick="show('process',this)">Your Role</button>
+    <button class="tab-btn" onclick="show('pay',this)">How You Get Paid</button>
+  </div>
+</div>
+
+<div class="content-wrap">
+
+<!-- OUR COMPASS -->
+<div id="compass" class="section active">
+  <div class="eyebrow">Who We Are</div>
+  <div class="pg-title">We exist so the right businesses<br>never get left behind.</div>
+  <div class="scripture-block">
+    <span class="sb-text">"Two are better than one,<br>because they have a good return for their labor."</span>
+    <span class="sb-ref">Ecclesiastes 4 : 9</span>
+  </div>
+  <div class="card">
+    <div class="c-eye">The Mission</div>
+    <div class="c-title">Tools that level the playing field.</div>
+    <div class="c-body">The best realtors, contractors, and insurance professionals in any market are not always the ones with the biggest tech budget. They're the ones who show up, do excellent work, and build trust over time.<br><br>We built Intellabooks so those people have access to the same intelligent systems that large companies pay millions to build — at a price that actually makes sense. Every client we serve is one more business competing on merit, not budget.</div>
+  </div>
+  <div class="dark-card">
+    <div class="dc-eye">Our Standard</div>
+    <div class="dc-title">We don't chase volume. We build trust.</div>
+    <div class="dc-body">We are grateful for every client and every partner who chooses to grow with us. <strong>We do what we say. We build what we promise.</strong> We share the reward with everyone who helped us get there.<br><br>That's not a marketing line. It's the only way we know how to work.</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="product" class="section">
+  <div class="eyebrow">The Product</div>
+  <div class="pg-title">One call. Every detail captured.<br>The marketing <em>builds itself.</em></div>
+  <p class="prose">The AI doesn't just answer the call. It <strong>listens, understands, and turns that conversation into a complete marketing and sales engine.</strong> Every contact — call, text, form, or DM — gets captured, categorized, and acted on. Messages go out. Calls get booked. Deals close. And every data point feeds back into reporting that makes the next campaign smarter than the last.</p>
+  <div class="af-steps">
+    <div class="af-step">
+      <div class="af-num">1</div>
+      <div class="af-label">Call Comes In</div>
+      <div class="af-desc">AI answers instantly. Natural conversation. No hold music, no missed calls.</div>
+    </div>
+    <div class="af-step">
+      <div class="af-num">2</div>
+      <div class="af-label">AI Analyzes</div>
+      <div class="af-desc">Listens to the full conversation. Understands context, intent, and urgency.</div>
+    </div>
+    <div class="af-step">
+      <div class="af-num">3</div>
+      <div class="af-label">Fields Created</div>
+      <div class="af-desc">Budget, location, timeline, needs — automatically entered into Intellabooks.</div>
+    </div>
+    <div class="af-step">
+      <div class="af-num">4</div>
+      <div class="af-label">Social, Email &amp; SMS Fire</div>
+      <div class="af-desc">Dynamic posts, platinum email sequences, and conversational SMS launch — personalized to that lead.</div>
+    </div>
+    <div class="af-step">
+      <div class="af-num">5</div>
+      <div class="af-label">Lookalike Ads Launch</div>
+      <div class="af-desc">That caller's profile builds a campaign to find 1,000 more just like them. Automatically.</div>
+    </div>
+  </div>
+  <div class="eyebrow" style="margin-bottom:10px">See It in Action</div>
+
+  <div class="full-example">
+    <div class="fe-header">
+      <div class="fe-industry">Realtor</div>
+      <div class="fe-headline">The agent who never misses a buyer again.</div>
+    </div>
+    <div class="fe-body">
+      <p>A buyer calls about a 4-bedroom in Southlake. $600k budget. Spring move. The agent is in a showing — Intellabooks answers warmly, collects every detail, and texts the buyer a confirmation before they even hang up. The agent never knew the phone rang.</p>
+      <p>Then the full system activates. A personalized email goes out within 3 minutes — not a blast, a message built from <em>this buyer's</em> conversation. A conversational SMS follows that evening: natural, specific, like a message from someone who was actually listening. Social posts about Southlake listings start appearing in the buyer's feed on Instagram and Facebook. The agent opens her morning with a formatted lead card, a booked showing, and a warm contact who already feels taken care of.</p>
+      <p>Every 2 months, Alicia and the Intellabooks team deliver a full Intelligence Report. Patterns emerge — what conversations convert, what neighborhoods are trending, what language closes. That data builds a <strong>Facebook and Instagram lookalike campaign</strong> targeting people with the same buying profile as the clients who already closed.</p>
+    </div>
+    <div class="fe-unlock">
+      <div class="fu-label">Revenue Unlock</div>
+      <div class="fu-text">If this agent closes 15 deals a year at $12k avg commission and Intellabooks re-engages just <strong>3 leads</strong> that would have gone cold — that's <strong>$36,000</strong> in commissions she wasn't counting on. Every year.</div>
+    </div>
+    <div class="fe-ads">
+      <div class="fa-label">True Ad Investment</div>
+      <div class="fa-text">Intellabooks covers the media buyer, content creation, and campaign optimization — that's the professional team, included. Clients pay separately for their daily platform spend. Recommended 2026 budgets: <strong>Meta $1,500/mo (~60 leads)</strong> · <strong>Google $1,000/mo (~35 leads)</strong> · <strong>LinkedIn $1,500/mo (~25 high-value leads)</strong>. Total spend: ~$4,000/mo for all three platforms. Every dollar goes further because audiences are built from real converted contacts.</div>
+    </div>
+  </div>
+
+  <div class="full-example">
+    <div class="fe-header">
+      <div class="fe-industry">Construction</div>
+      <div class="fe-headline">The contractor whose leads close before he gets off the job site.</div>
+    </div>
+    <div class="fe-body">
+      <p>A homeowner calls about a kitchen remodel. 250 square feet. High-end finishes. The contractor is on a roof in Frisco. Intellabooks answers, captures the project scope, budget range, and timeline — and immediately sends a personalized follow-up text: <em>"Thank you for reaching out. We specialize in exactly this. I'll have someone with you by tomorrow morning."</em></p>
+      <p>An email goes out with portfolio images matching their request. SMS check-ins run on a smart schedule — not spam, timed responses that feel like a person who's paying attention. By the time the contractor calls back, the lead is warm, qualified, and expecting to move forward. The deal often closes before a single in-person visit.</p>
+      <p>Over two months that data — which remodel types, which neighborhoods, which budgets — feeds the report. Lookalike campaigns launch on Meta targeting homeowners in the same zip code with similar household income. The pipeline fills itself.</p>
+    </div>
+    <div class="fe-unlock">
+      <div class="fu-label">Revenue Unlock</div>
+      <div class="fu-text">Average kitchen remodel: <strong>$45,000</strong>. If Intellabooks captures and converts just <strong>2 additional leads per month</strong> that would have gone unanswered — that's <strong>$90,000/month</strong> in new project revenue.</div>
+    </div>
+    <div class="fe-ads">
+      <div class="fa-label">Standard 2026 Ad Budget</div>
+      <div class="fa-text">$4,000/mo. With lookalike audiences built from real closed-project data, those campaigns target homeowners already planning remodels — not just anyone who owns a home.</div>
+    </div>
+  </div>
+
+  <div class="full-example">
+    <div class="fe-header">
+      <div class="fe-industry">Insurance</div>
+      <div class="fe-headline">The agent whose leads arrive already trusting her.</div>
+    </div>
+    <div class="fe-body">
+      <p>A 41-year-old calls. Married. Two kids. Owns a home. Looking for life insurance. The agent is with another client. Intellabooks answers, hears the full picture, and immediately routes a structured lead card to the agent — age, family situation, assets, urgency level. All filled in. Ready to close.</p>
+      <p>A platinum email sequence launches — three messages over seven days, each one built around this person's specific situation: protecting a family, owning a home, planning ahead. SMS follows with a single warm question: <em>"Do you have 20 minutes this week to talk through your options? I'd love to help."</em> A demo call gets booked. The agent shows up already knowing everything.</p>
+      <p>Every 2 months, the report identifies the profile that converts fastest. LinkedIn lookalike campaigns launch targeting professionals in the same life stage — married homeowners in their late 30s and 40s with dependents. The pipeline fills with exactly the right people.</p>
+    </div>
+    <div class="fe-unlock">
+      <div class="fu-label">Revenue Unlock</div>
+      <div class="fu-text">Average life policy commission: <strong>$1,200</strong>. If Intellabooks re-engages <strong>10 cold leads per month</strong>, that's <strong>$12,000/month</strong> in commissions the agent was already leaving behind.</div>
+    </div>
+    <div class="fe-ads">
+      <div class="fa-label">Standard 2026 Ad Budget</div>
+      <div class="fa-text">$4,000/mo. LinkedIn is especially powerful for this profile. Intellabooks audiences are built from real policy-converted contacts — not demographic guesses.</div>
+    </div>
+  </div>
+
+  <div class="accent">
+    <div class="a-title">The thing to say when they ask what makes this different</div>
+    <div class="a-body">"It's not just automation. It sends the right message, books the call, closes the deal, and then tells you exactly what worked — so next month it works even better. It's a system that learns." That's the conversation that opens the door.</div>
+  </div>
+</div>
+
+<!-- THE VALUE -->
+<div id="value" class="section">
+  <div class="eyebrow">The Recipe</div>
+  <div class="pg-title">What $20 an hour<br><em>actually buys.</em></div>
+
+  <p class="prose">If a business hired every expert Intellabooks replaces, they'd spend well over $200 an hour. Here's the recipe — every ingredient that goes into every hour of service.</p>
+
+  <div class="recipe-grid">
+    <div class="recipe-row">
+      <div class="rr-role">Social Media Management</div>
+      <div class="rr-market">Market rate $50–80/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">Platinum Email Strategy</div>
+      <div class="rr-market">Market rate $40–75/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">Conversational SMS Campaigns</div>
+      <div class="rr-market">Market rate $35–60/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">AI Receptionist (24/7)</div>
+      <div class="rr-market">Market rate $40k–52k/yr salary</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">CRM &amp; Pipeline Management</div>
+      <div class="rr-market">Market rate $60–120/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">Reporting &amp; Analytics</div>
+      <div class="rr-market">Market rate $50–100/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">Implementation &amp; Onboarding</div>
+      <div class="rr-market">Market rate $75–150/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-row">
+      <div class="rr-role">Ongoing Support</div>
+      <div class="rr-market">Market rate $25–60/hr</div>
+      <div class="rr-intella">Included</div>
+    </div>
+    <div class="recipe-total">
+      <div class="rt-label">What they'd pay hiring separately</div>
+      <div class="rt-val">$375–$645<span>/hr</span></div>
+      <div class="rt-vs">vs.</div>
+      <div class="rt-intella">$20–$30<span>/hr with Intellabooks</span></div>
+    </div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:2.25rem;margin-bottom:1rem">Partner Pricing</div>
+  <p class="prose">As a founding partner, you offer clients exclusive access at the founding rate — reserved for businesses brought in through our partner program. This isn't a discount. It's a privilege we extend because of the relationship you bring.</p>
+
+  <div class="tier-cards">
+    <div class="tier-card">
+      <div class="tc-name">Core</div>
+      <div class="tc-desc">AI receptionist, CRM, email &amp; SMS automation, reporting</div>
+      <div class="tc-retail">Retail <span>$20/hr</span></div>
+      <div class="tc-partner">Partner Rate <strong>$15/hr</strong></div>
+      <div class="tc-earn">You earn $5/hr · ~$800/mo per client</div>
+    </div>
+    <div class="tier-card featured-tier">
+      <div class="tc-badge">Most Popular</div>
+      <div class="tc-name">Marketing</div>
+      <div class="tc-desc">Everything in Core + social media, platinum email campaigns, content strategy</div>
+      <div class="tc-retail">Retail <span>$25/hr</span></div>
+      <div class="tc-partner">Partner Rate <strong>$20/hr</strong></div>
+      <div class="tc-earn">You earn $5/hr · ~$800/mo per client</div>
+    </div>
+    <div class="tier-card">
+      <div class="tc-name">Elite</div>
+      <div class="tc-desc">Everything in Marketing + ad management, lookalike campaigns, dedicated support</div>
+      <div class="tc-retail">Retail <span>$30/hr</span></div>
+      <div class="tc-partner">Partner Rate <strong>$25/hr</strong></div>
+      <div class="tc-earn">You earn $5/hr · ~$800/mo per client</div>
+    </div>
+  </div>
+
+  <div class="accent" style="margin-top:1.5rem">
+    <div class="a-title">Every tier earns you the same residual.</div>
+    <div class="a-body">Whether your client is on Core or Elite, you earn $5/hr on every hour of service — approximately $800 per client per month. Upselling to a higher tier doesn't change your residual, but it does deepen the relationship and increase the client's results, which keeps them around longer.</div>
+  </div>
+</div>
+
+<!-- YOUR ROLE -->
+<div id="process" class="section">
+  <div class="eyebrow">Your Role</div>
+  <div class="pg-title">Three steps.<br>Then it's <em>our turn.</em></div>
+  <p class="prose">You don't need to understand the technology. You don't need to close the deal. Your job is to open one door — we'll walk through it together.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div>
+        <div class="step-title">Find the moment</div>
+        <div class="step-body">A realtor misses calls while showing homes. A contractor loses leads because follow-up takes too long. An insurance agent's pipeline lives in a spreadsheet. That's your moment. You don't pitch — you ask: <em>"What happens to leads that come in after hours?"</em></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div>
+        <div class="step-title">Start the conversation</div>
+        <div class="step-body">You don't pitch technology. You ask: <em>"What happens to your leads when you're unavailable?"</em> When they describe the problem — missed calls, cold follow-up, a pipeline living in their head — say: <em>"I know exactly what fixes that. Can I get you on a call with our team?"</em> Then connect us. We send them their own client-facing intro page and handle everything from there.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div>
+        <div class="step-title">We build the demo. We close the deal.</div>
+        <div class="step-body">We build a custom demo account for their industry before the call — their name, their brand, their use case already live. We handle the 20-minute call and close. You earn residual income every month they stay with us. No expiration.</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="c-eye">What Is a CRM — and Why Ours Is Different</div>
+    <div class="c-title">Forget the word "CRM." Think of it as your client's business memory.</div>
+    <div class="c-body">Most people hear "CRM" and picture a spreadsheet with names and phone numbers. That's not what Intellabooks is.<br><br>Intellabooks is your client's <strong>Intelligence Hub</strong> — a living center that remembers every conversation, tracks every lead, sends every follow-up, and learns what drives results. If their business were a person, Intellabooks would be their assistant, their marketing team, and their analyst — all awake, all working, all the time.<br><br>When you talk to a prospect, you don't need to say "CRM." Say: <em>"It's like a 24/7 team member who knows every client by name, never forgets to follow up, and tells you every month what's actually making you money."</em></div>
+  </div>
+
+  <div class="card">
+    <div class="c-eye">Know Someone Who Needs This Opportunity?</div>
+    <div class="c-title">Passing it on is a gift to your neighbor.</div>
+    <div class="c-body">If you know someone — a friend, a family member, someone in your network — who would be great at this and could use the income, share it with them. Not because it benefits you financially, but because that's what good people do.<br><br>Have them reach out directly: <a href="mailto:xavier@intellabooks.ai" style="color:var(--gold);text-decoration:none;font-weight:500">xavier@intellabooks.ai</a></div>
+  </div>
+</div>
+
+<!-- HOW YOU GET PAID -->
+<div id="pay" class="section">
+  <div class="eyebrow">Your Income</div>
+  <div class="pg-title">Residual. Recurring.<br><em>Yours for keeps.</em></div>
+  <div class="pay-hero">
+    <div class="ph-label">You earn per client, per month</div>
+    <div class="ph-num"><sup>$</sup>800<sub> /mo</sub></div>
+    <div class="ph-sub">$5/hr &times; 160 hours per client. Every month they stay with us, you earn.</div>
+  </div>
+  <div class="pay-grid">
+    <div class="pg-box">
+      <div class="pgb-label">5 Clients</div>
+      <div class="pgb-val">$4k<em>/mo</em></div>
+      <div class="pgb-note">The foundation. Passive from here forward.</div>
+    </div>
+    <div class="pg-box hl">
+      <div class="pgb-label">30 Clients</div>
+      <div class="pgb-val">$24k<em>/mo</em></div>
+      <div class="pgb-note">$250k+ annually. This is the target.</div>
+    </div>
+    <div class="pg-box">
+      <div class="pgb-label">No ceiling</div>
+      <div class="pgb-val">&#8734;</div>
+      <div class="pgb-note">Add partners. Add clients. Income compounds.</div>
+    </div>
+  </div>
+  <div class="eyebrow" style="margin-top:2rem;margin-bottom:0.75rem">Choose Your Payout Schedule</div>
+  <p class="prose" style="margin-bottom:1rem">You choose how often you get paid. Amounts below show what you earn per client — every client you add multiplies this.</p>
+  <div class="payout-grid">
+    <div class="payout-box selected" onclick="selectPayout(this)">
+      <div class="pb-freq">Weekly</div>
+      <div class="pb-val">$200<em>/wk</em></div>
+      <div class="pb-note">Per client. Paid every Friday.</div>
+    </div>
+    <div class="payout-box" onclick="selectPayout(this)">
+      <div class="pb-freq">Bi-Weekly</div>
+      <div class="pb-val">$400<em>/2wk</em></div>
+      <div class="pb-note">Per client. Every two weeks.</div>
+    </div>
+    <div class="payout-box" onclick="selectPayout(this)">
+      <div class="pb-freq">Monthly</div>
+      <div class="pb-val">$800<em>/mo</em></div>
+      <div class="pb-note">Per client. Full month lump sum.</div>
+    </div>
+  </div>
+  <div class="accent" style="margin-bottom:1.75rem">
+    <div class="a-title">1 client = $200/week. The math is simple from there.</div>
+    <div class="a-body">1 client × $5/hr × 160 hrs = $800/month. Choose weekly and that's $200 every Friday — per client. At 5 clients: $1,000/week. At 10: $2,000/week. At 30: $6,000 every single week. You pick the cadence. Intellabooks handles the rest.</div>
+  </div>
+
+  <div class="eyebrow" style="margin-bottom:1rem">What You Unlock Along the Way</div>
+  <div class="reward">
+    <div class="rw-label">After 2 Clients</div>
+    <div class="rw-title">Your <em>Partner Kit</em> arrives.</div>
+    <div class="rw-pills">
+      <span class="rw-pill">MacBook</span>
+      <span class="rw-pill">iPad</span>
+      <span class="rw-pill">Elite Business Cards</span>
+      <span class="rw-pill">$250 Wardrobe Gift Card</span>
+    </div>
+  </div>
+  <div class="reward">
+    <div class="rw-label">Every 5 Clients After That</div>
+    <div class="rw-title">You choose<br>where <em>you go.</em></div>
+    <div class="rw-pills">
+      <span class="rw-pill">Trip to Your Destination of Choice</span>
+      <span class="rw-pill">Covered by Intellabooks</span>
+    </div>
+  </div>
+  <div class="accent" style="margin-top:1.5rem">
+    <div class="a-title">No upfront cost. We invest in you first.</div>
+    <div class="a-body">No fees, no packages, no certification costs. Bring us two clients and watch what comes back to you.</div>
+  </div>
+</div>
+
+<!-- THE BLUEPRINT -->
+<div id="blueprint" class="section">
+  <div class="eyebrow">The Intellabooks System</div>
+  <div class="pg-title">Every contact becomes<br>a <em>complete growth cycle.</em></div>
+
+  <p class="prose">From the moment someone reaches out — by call, text, form, or DM — Intellabooks captures everything and sets an entire system in motion. Here is what happens, every single time, automatically.</p>
+
+  <div class="blueprint-flow">
+
+    <div class="bp-node bp-top">
+      <div class="bp-label">Any Incoming Contact</div>
+      <div class="bp-pills">
+        <span>📞 Phone Call</span><span>💬 Text / SMS</span><span>📋 Form Fill</span><span>📩 Email</span>
+      </div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-node">
+      <div class="bp-label">AI Captures &amp; Analyzes</div>
+      <div class="bp-sub">Name, budget, need, timeline, urgency — all extracted and written into Intellabooks automatically. No manual entry. No missed details.</div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-fork">
+      <div class="bp-fork-left">
+        <div class="bf-tag">They Book a Demo</div>
+        <div class="bf-text">Calendar invite sent. Confirmation + reminder sequence fires. We show up knowing everything about them.</div>
+      </div>
+      <div class="bp-fork-or">or</div>
+      <div class="bp-fork-right">
+        <div class="bf-tag">They Don't Book Yet</div>
+        <div class="bf-text">Contact is added to Intellabooks anyway. Smart follow-up begins. They're in the system — and we haven't lost them.</div>
+      </div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-node bp-hub">
+      <div class="bp-hub-eye">The Command Center</div>
+      <div class="bp-label">Intellabooks Intelligence Hub</div>
+      <div class="bp-sub">Every contact. Every conversation. Every result. One living, learning system. This is what most people call a "CRM" — but Intellabooks is your client's business memory, marketing engine, and growth analyst in one.</div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-channels">
+      <div class="bp-channel">
+        <div class="bc-icon">✉️</div>
+        <div class="bc-name">Platinum Email</div>
+        <div class="bc-desc">Sequences built from the conversation. Not blasts — intelligent messages timed to the person's journey.</div>
+      </div>
+      <div class="bp-channel">
+        <div class="bc-icon">💬</div>
+        <div class="bc-name">Conversational SMS</div>
+        <div class="bc-desc">Two-way texts that read the context. Replies go out that sound human because they're built from what the lead actually said.</div>
+      </div>
+      <div class="bp-channel">
+        <div class="bc-icon">📸</div>
+        <div class="bc-name">Instagram</div>
+        <div class="bc-desc">Dynamic content and retargeting that puts the right post in front of the right person at the right time.</div>
+      </div>
+      <div class="bp-channel">
+        <div class="bc-icon">📘</div>
+        <div class="bc-name">Facebook</div>
+        <div class="bc-desc">Campaigns and retargeting built from real customer data — not demographic guesses.</div>
+      </div>
+      <div class="bp-channel">
+        <div class="bc-icon">💼</div>
+        <div class="bc-name">LinkedIn</div>
+        <div class="bc-desc">Professional reach for B2B and high-value verticals. Audiences built from converted contacts.</div>
+      </div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-node bp-report">
+      <div class="bp-hub-eye">Every 2 Months · Alicia &amp; Team</div>
+      <div class="bp-label">Intelligence Reporting</div>
+      <div class="bp-sub">Alicia and the Intellabooks team deliver a full report: what converted, what didn't, what messages performed, what your best customers have in common. Every data point — call, text, email, social, ad — feeds this report. Decisions get made from truth, not guesses.</div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-node">
+      <div class="bp-label">Lookalike Campaigns Launch</div>
+      <div class="bp-sub">The report reveals who your best clients are. Intellabooks builds Meta and LinkedIn audiences from those exact profiles and launches campaigns to find 1,000 more just like them. Standard 2026 ad budget: <strong>$4,000/month</strong> — stretched further because every audience is built from real results, not assumptions.</div>
+    </div>
+
+    <div class="bp-arrow">↓</div>
+
+    <div class="bp-node bp-bottom">
+      <div class="bp-label">Revenue Compounds. The Cycle Continues.</div>
+      <div class="bp-sub">Every new contact feeds the system. Every campaign result improves the next one. Every client Intellabooks serves gets smarter over time — and so does the business it's serving.</div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+<script>
+function selectPayout(el){
+  el.closest('.payout-grid').querySelectorAll('.payout-box').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function show(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
